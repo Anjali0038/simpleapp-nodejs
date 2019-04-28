@@ -1,0 +1,21 @@
+<% include partials/header %>
+<h1>Hey<%=name%></h1>
+
+<div>
+    <ul class="goals">
+      <% goals.map(function(goal){%>
+         
+           <li class ="goal-list"> <%= goal.title%></li>
+           <form action="/form/<%=goal._id%>?_method=DELETE" method="POST">
+               <button type="submit" onclick="return confirmDelete()">Delete</button>
+           </form>
+           <%})%>
+    </ul>
+</div>
+<script>
+function confirmDelete(){
+    return confirm("Are you sure?");
+}
+</script>
+
+<%include partials/footer%>
